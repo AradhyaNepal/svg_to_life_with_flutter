@@ -18,6 +18,8 @@ class _PaymentCompletedState extends State<PaymentCompleted>
   late final Animation<double> _itemsRotateAnimation;
   late final Animation<double> _itemsScaleAnimation;
   late final Animation<double> _mobileTopFallFromTopAnimation;
+  late final Animation<double> _mobileTopOpacityAnimation;
+  late final Animation<double> _mobileMidOpacityAnimation;
   late final Animation<double> _mobileMidComeFromRightAnimation;
   late final Animation<double> _mobileBottomOpacityAnimation;
 
@@ -37,7 +39,7 @@ class _PaymentCompletedState extends State<PaymentCompleted>
       ),
     );
 
-    _mobileTopFallFromTopAnimation = Tween<double>(begin: 40.h, end: 0).animate(
+    _mobileTopFallFromTopAnimation = Tween<double>(begin: -40.h, end: 0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(
@@ -47,8 +49,18 @@ class _PaymentCompletedState extends State<PaymentCompleted>
         ),
       ),
     );
+    _mobileTopOpacityAnimation = Tween<double>(begin: 0, end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(
+          0.33,
+          0.44,
+          curve: Curves.easeInOut,
+        ),
+      ),
+    );
     _mobileMidComeFromRightAnimation =
-        Tween<double>(begin: 50.w, end: 0).animate(
+        Tween<double>(begin: -50.w, end: 0).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(
@@ -58,19 +70,30 @@ class _PaymentCompletedState extends State<PaymentCompleted>
         ),
       ),
     );
+    _mobileMidOpacityAnimation =
+        Tween<double>(begin: 0, end: 1).animate(
+          CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(
+              0.55,
+              0.66,
+              curve: Curves.easeInOut,
+            ),
+          ),
+        );
     _mobileBottomOpacityAnimation = Tween<double>(begin: 0, end: 1).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(
           0.77,
-          0.1,
+          1,
           curve: Curves.easeInOut,
         ),
       ),
     );
 
     _itemsRotateAnimation =
-        Tween<double>(end: 0, begin: degreeToRadian(-30)).animate(
+        Tween<double>(end: 0, begin: degreeToRadian(180)).animate(
       CurvedAnimation(
         parent: _controller,
         curve: Curves.bounceOut,
@@ -79,18 +102,14 @@ class _PaymentCompletedState extends State<PaymentCompleted>
 
     final smallSizeTween = Tween<double>(
       begin: 1,
-      end: 0.75,
+      end: 0.5,
     );
     final bigSizeTween = Tween<double>(
-      begin: 0.75,
+      begin: 0.5,
       end: 1,
     );
     _itemsScaleAnimation = TweenSequence<double>([
       TweenSequenceItem(
-        tween: smallSizeTween,
-        weight: 0.2,
-      ),
-      TweenSequenceItem(
         tween: bigSizeTween,
         weight: 0.2,
       ),
@@ -104,6 +123,10 @@ class _PaymentCompletedState extends State<PaymentCompleted>
       ),
       TweenSequenceItem(
         tween: smallSizeTween,
+        weight: 0.2,
+      ),
+      TweenSequenceItem(
+        tween: bigSizeTween,
         weight: 0.2,
       ),
     ]).animate(
@@ -165,26 +188,32 @@ class _PaymentCompletedState extends State<PaymentCompleted>
                   ),
                   Positioned.fill(
                     child: AnimatedBuilder(
-                        animation: _mobileTopFallFromTopAnimation,
+                        animation: Listenable.merge([_mobileTopFallFromTopAnimation,_mobileTopOpacityAnimation]),
                         builder: (context, _) {
                           return Transform.translate(
                             offset:
                                 Offset(0, _mobileTopFallFromTopAnimation.value),
-                            child: SvgPicture.asset(
-                              ImageConstants.examCompleteMobileTop,
+                            child: Opacity(
+                              opacity: _mobileTopOpacityAnimation.value,
+                              child: SvgPicture.asset(
+                                ImageConstants.examCompleteMobileTop,
+                              ),
                             ),
                           );
                         }),
                   ),
                   Positioned.fill(
                     child: AnimatedBuilder(
-                        animation: _mobileMidComeFromRightAnimation,
+                        animation:  Listenable.merge([_mobileMidComeFromRightAnimation,_mobileMidOpacityAnimation]),
                         builder: (context, _) {
                           return Transform.translate(
                             offset: Offset(
                                 _mobileMidComeFromRightAnimation.value, 0),
-                            child: SvgPicture.asset(
-                              ImageConstants.examCompleteMobileMiddle,
+                            child: Opacity(
+                              opacity: _mobileMidOpacityAnimation.value,
+                              child: SvgPicture.asset(
+                                ImageConstants.examCompleteMobileMiddle,
+                              ),
                             ),
                           );
                         }),
