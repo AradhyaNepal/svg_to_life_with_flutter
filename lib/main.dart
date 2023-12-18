@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:svg_to_life/payment_completed.dart';
-import 'package:svg_to_life/screens/splash_screen.dart';
+import 'package:svg_to_life/screens/payment_completed.dart';
 
 void main() {
   runApp(const MyApp());

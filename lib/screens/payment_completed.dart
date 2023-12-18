@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:svg_to_life/constants/image_constants.dart';
 
 class PaymentCompleted extends StatelessWidget {
   const PaymentCompleted({super.key});
@@ -12,24 +13,30 @@ class PaymentCompleted extends StatelessWidget {
         child: Column(
           children: [
             SizedBox(height: 80.h),
-            Container(
+            SizedBox(
               height: 416.h,
               width: double.infinity,
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: SvgPicture.asset(
-
-                    ),
-                  ),
-                  Positioned.fill(
-                    child: child,
-                  ),
-                  Positioned.fill(
-                    child: child,
-                  ),
-                ],
-              ),
+              child:
+                SvgPicture.asset(ImageConstants.examComplete),
+              // Stack(
+              //   children: [
+              //     Positioned.fill(
+              //       child: SvgPicture.asset(
+              //         ImageConstants.examCompleteBackground,
+              //       ),
+              //     ),
+              //     Positioned.fill(
+              //       child: SvgPicture.asset(
+              //         ImageConstants.examCompleteMobile,
+              //       ),
+              //     ),
+              //     Positioned.fill(
+              //       child: SvgPicture.asset(
+              //         ImageConstants.examCompletePerson,
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ),
             SizedBox(
               height: 46.h,
