@@ -1,6 +1,6 @@
 # svg_to_life
 
-Bring SVG to Life by adding Animation on it just Flutter's Animation Controller.
+Bring SVG to Life by adding Animation using Flutter's Animation Controller.
 
 ## APK
 [Touch Me!](https://drive.google.com/file/d/1_Bk0LWbHF3wZB7yZK4YX6Q9BHaSH9JGg/view?usp=sharing)
