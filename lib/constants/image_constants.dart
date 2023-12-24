@@ -11,9 +11,12 @@ class ImageConstants{
 
 
 
-  static const String taskCompleteBackground="$basePath/task_complete_background.svg";
-  static const String taskCompletePerson="$basePath/task_complete_person.svg";
-  static const String taskCompleteStar1="$basePath/task_complete_star1.svg";
-  static const String taskCompleteStar2="$basePath/task_complete_star2.svg";
-  static const String taskCompleteStar3="$basePath/task_complete_star3.svg";
+  static const String taskCompletedBackground="$basePath/task_completed_background.svg";
+  static const String taskCompletedStar1="$basePath/task_completed_star1.svg";
+  static const String taskCompletedStar2="$basePath/task_completed_star2.svg";
+  static const String taskCompletedStar3="$basePath/task_completed_star3.svg";
+  static const String taskCompletedPerson="$basePath/task_completed_person.svg";
+  static const String taskCompletedItems="$basePath/task_completed_items.svg";
+  static const String taskCompletedHeader="$basePath/task_completed_header.svg";
+
 }
