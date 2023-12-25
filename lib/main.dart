@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:svg_to_life/constants/color_constants.dart';
 import 'package:svg_to_life/on_boarding/view/on_boarding_screen.dart';
 
 void main() {
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           title: 'SVG To Life',
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            colorScheme: ColorScheme.fromSeed(seedColor:  ColorConstants.primaryColor,primary: ColorConstants.primaryColor,),
             useMaterial3: true,
           ),
           home: const OnBoardingScreen(),
