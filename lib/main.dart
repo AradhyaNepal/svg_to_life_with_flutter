@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:svg_to_life/screens/helping_screen.dart';
+import 'package:svg_to_life/screens/payment_completed.dart';
 import 'package:svg_to_life/screens/task_completed_screen.dart';
 
 void main() {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const TaskCompletedScreen(),
+          home: const HelpingScreen(),
         );
       },
     );

@@ -19,4 +19,10 @@ class ImageConstants{
   static const String taskCompletedItems="$basePath/task_completed_items.svg";
   static const String taskCompletedHeader="$basePath/task_completed_header.svg";
 
+
+  static const String helpingBackground="$basePath/helping_background.svg";
+  static const String helpingBottomClouds="$basePath/helping_bottom_clouds.svg";
+  static const String helpingGoingUp="$basePath/helping_going_up.svg";
+  static const String helpingUpperClouds="$basePath/helping_upper_clouds.svg";
+
 }

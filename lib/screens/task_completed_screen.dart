@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:svg_to_life/constants/image_constants.dart';
+import 'package:svg_to_life/constants/radius_to_radian.dart';
 
 class TaskCompletedScreen extends StatefulWidget {
   const TaskCompletedScreen({super.key});
@@ -15,7 +16,7 @@ class _TaskCompletedScreenState extends State<TaskCompletedScreen>
   late final AnimationController
       _controller; // Value start from 0 and ends at 1
   late final Animation<double> _personOpacityAnimation;
-  late final Animation<double> _itemsScaleAnimation;
+  late final Animation<double> _personRotateAnimation;
   late final Animation<Offset> _star1TransformAnimation;
   late final Animation<double> _star1OpacityAnimation;
   late final Animation<Offset> _star2TransformAnimation;
@@ -30,7 +31,7 @@ class _TaskCompletedScreenState extends State<TaskCompletedScreen>
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(
-        milliseconds: 4000,
+        milliseconds: 3000,
       ),
     );
     //Interval: 0 to 1. eg: 0.25 -> 25% of 5 seconds
@@ -44,11 +45,11 @@ class _TaskCompletedScreenState extends State<TaskCompletedScreen>
         ),
       ),
     );
-    _itemsScaleAnimation = Tween<double>(begin: 0, end: 1).animate(
+    _personRotateAnimation = Tween<double>(begin: degreeToRadian(-45), end: degreeToRadian(0)).animate(
       CurvedAnimation(
         parent: _controller,
         curve: const Interval(
-          0.2,
+          0.0,
           0.35,
         ),
       ),
@@ -155,10 +156,13 @@ class _TaskCompletedScreenState extends State<TaskCompletedScreen>
                         ),
                       ),
                       Positioned.fill(
-                        child: Opacity(
-                          opacity: _personOpacityAnimation.value,
-                          child: SvgPicture.asset(
-                            ImageConstants.taskCompletedPerson,
+                        child: Transform.rotate(
+                          angle:_personRotateAnimation.value,
+                          child: Opacity(
+                            opacity: _personOpacityAnimation.value,
+                            child: SvgPicture.asset(
+                              ImageConstants.taskCompletedPerson,
+                            ),
                           ),
                         ),
                       ),
