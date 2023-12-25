@@ -81,7 +81,7 @@ class _GrowTogetherAnimatedState extends State<GrowTogetherAnimated>
                 ),
               ),
             ),
-            child ?? const SizedBox(),
+            child ?? const SizedBox(),//This do not change with animation
             Positioned.fill(
               child: Transform.translate(
                 offset: Offset(_personDxAnimation.value,
@@ -104,7 +104,7 @@ class _GrowTogetherAnimatedState extends State<GrowTogetherAnimated>
       },
       child: Positioned.fill(
         child: SvgPicture.asset(
-          ImageConstants.helpingBackground,
+          ImageConstants.helpingBackground, //This do not change with animation
         ),
       ),
     );
