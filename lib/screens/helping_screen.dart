@@ -23,25 +23,25 @@ class _HelpingScreenState extends State<HelpingScreen>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 3000),
+      duration: const Duration(milliseconds: 2500),
     );
     final itemCurveController=CurvedAnimation(
       parent: _controller,
       curve: const Interval(
-        0.4,
+        0,
         1,
-        curve: Curves.bounceOut,
+        curve: Curves.decelerate,
       ),
     );
     _upperCloudDxAnimation =
-        Tween<double>(begin: -375.w, end: 0).animate(itemCurveController);
+        Tween<double>(begin: -250.w, end: 0).animate(itemCurveController);
     _bottomCloudDxAnimation =
-        Tween<double>(begin: 375.w, end: 0).animate(itemCurveController);
+        Tween<double>(begin: 250.w, end: 0).animate(itemCurveController);
     final personCurveController=CurvedAnimation(
       parent: _controller,
       curve: const Interval(
         0,
-        0.5,
+        0.75,
         curve: Curves.easeInOut,
       ),
     );
